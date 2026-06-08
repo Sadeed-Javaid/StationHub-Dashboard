@@ -1,20 +1,13 @@
-import React, { useState } from "react";
-import Logo from "../assets/Logo.png";
-import MenuLogo from "../assets/menu1.png";
-import MoreLogo from "../assets/more.png";
-import DashLogo from "../assets/dashboard.png";
-import dropLogo from "../assets/waterdrop.png";
-import StationLogo from "../assets/station.png";
-import InfinityLogo from "../assets/infinity.png";
 import GroupLogo from "../assets/group.png";
+import InfinityLogo from "../assets/infinity.png";
+import StationLogo from "../assets/station.png";
 import AppointmentLogo from "../assets/appointment.png";
-import UserMenuModal from "../components/modals/menuModal";
+import Money from "../assets/money2.png"
+// import Money2 from "../assets/money2.png"
 
+import React from 'react'
 
-const LOGO_SRC = Logo;
-
-// const filters = ["Daily", "Weekly", "Monthly", "All"];
-
+const Dashboard = () => {
 
 
 const statCards = [
@@ -23,126 +16,9 @@ const statCards = [
   { label: "Total Bookings", value: "0", icon: AppointmentLogo },
   { label: "Services", value: "Unlimited", icon: InfinityLogo },
 ];
-
-const navItems = [
-  { name: "Dashboard", icon: DashLogo },
-  { name: "Services", icon: dropLogo },
-  // { name: "Users", icon: "👥" },
-  // { name: "Settings", icon: "⚙️" },
-  // { name: "Reports", icon: "📈" },
-];
-
-export default function Dashboard() {
-  const [activeFilter, setActiveFilter] = useState("All");
-  const [activePage, setActivePage] = useState("Dashboard");
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-
-const handleProfile = () => {
-  console.log("Profile clicked");
-};
-
-const handleSettings = () => {
-  console.log("Settings clicked");
-};
-
-const handleLogout = () => {
-  console.log("Logout clicked");
-};
-
   return (
-    <div className="flex min-h-screen bg-gray-100 font-sans">
-
-      {/* ── Sidebar ── */}
-      <aside
-        className={`flex-shrink-0 bg-white border-r border-gray-200 flex flex-col transition-all duration-300 ${
-          sidebarOpen ? "w-52" : "w-14"
-        }`}
-      >
-        {/* Logo + Toggle btn */}
-        <div className={`flex items-center border-b border-gray-100  px-3 py-0 ${
-            sidebarOpen ? "justify-between" : "justify-center"
-              }`}>
-            
-            {/* Logo */}
-            <div className="w-20 h-20 flex items-center  ml-0  justify-center">
-              {sidebarOpen && (
-                <img src={LOGO_SRC} className="w-20 h-20 object-contain ml-8 hover:cursor-pointer" />
-              )}
-            </div>
-
-            {/* Menu button (fixed size box prevents clipping) */}
-            <div className="w-10 h-10 flex items-center justify-center">
-              <button
-                onClick={() => setSidebarOpen(!sidebarOpen)}
-                className="w-7 h-7 flex items-center justify-center rounded-lg hover:cursor-pointer"
-              >
-                <img src={MenuLogo} className="w-5 h-5" />
-              </button>
-            </div>
-        </div>
-
-        {/* Nav */}
-        <nav className="flex-1 px-2 py-4 space-y-1 ">
-          {navItems.map((item) => (
-            <button
-              key={item.name}
-              onClick={() => setActivePage(item.name)}
-              className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg text-sm transition-colors ${
-                activePage === item.name
-                  ? "bg-orange-500/20 border-[1px] border-orange-500 hover:cursor-pointer text-black font-medium"
-                  : "text-gray-600 hover:bg-gray-100 hover:cursor-pointer"
-              } ${!sidebarOpen ? "justify-center" : ""}`}
-              title={!sidebarOpen ? item.name : ""}
-            >
-              <span className="text-base">
-                <img src={item.icon} alt={item.name} className="w-5 h-5" />
-              </span>
-
-              {sidebarOpen && <span>{item.name}</span>}
-            </button>
-          ))}
-        </nav>
-
-        {/* Bottom */}
-        <div className="border-t border-gray-100 px-2 py-4 space-y-1">
-          <div className={`flex items-center gap-2 px-2 py-2 bg-orange-500/20 border-[1px] rounded-lg border-orange-500  ${!sidebarOpen ? "justify-center " : ""}`}>
-            <div className="w-7 h-7 rounded-full bg-orange-500 flex items-center justify-center text-white text-xs font-semibold flex-shrink-0">
-              SJ
-            </div>
-            {sidebarOpen && (
-              <div className="min-w-0 flex items-center justify-between gap-2">
-                <div>
-                  <p className="text-xs font-medium text-gray-800 truncate">Sadeed Javaid</p>
-                  <p className="text-xs text-gray-400 truncate">sadeed@example.com</p>
-                </div>
-                <div className='relative'>
-                  <img
-                  src={MoreLogo}
-                  alt="More"
-                  className="w-4 h-4 cursor-pointer"
-                  onClick={(e) => {
-                    const rect = e.currentTarget.getBoundingClientRect();
-
-                   setModalPosition({
-                    top: rect.top - 145,   // 120 = approx modal height; pushes it above the icon
-                    left: rect.right - 180, // adjust horizontal alignment as needed
-                  });
-
-                    setIsModalOpen(true);
-                  }}
-                />
-                </div>
-              </div>
-              
-            )}
-          </div>
-        </div>
-      </aside>
-
-      {/* ── Main Content ── */}
+    <div>
+        {/* ── Main Content ── */}
       <main className="flex-1 p-6 overflow-auto">
 
         {/* Header */}
@@ -198,48 +74,116 @@ const handleLogout = () => {
             </div>
           ))}
         </div>
-
-        {/* Bottom Panels */}
-        {/* <div className="grid grid-cols-3 gap-4">
-          <div className="bg-white border border-gray-200 rounded-xl p-4">
-            <div className="flex items-center justify-between mb-4">
-              <p className="text-sm font-medium text-gray-800">Recent Stations</p>
-              <a href="#" className="text-xs text-orange-500 hover:text-orange-600">View all</a>
-            </div>
-            <p className="text-sm text-gray-400 text-center py-8">No stations found</p>
+        {/* /////////////////////////////////////////////////// */}
+        {/* Today's Earnings */}
+        <div className="bg-gradient-to-r from-orange-500 to-orange-400 rounded-2xl p-5 mb-6 flex items-center justify-between shadow-sm">
+          <div>
+            <p className="text-sm text-orange-100 mb-1">Today's Earnings</p>
+            <p className="text-3xl font-bold text-white">PKR 0</p>
+            <p className="text-xs text-orange-100 mt-1">No bookings completed today</p>
           </div>
-
-          <div className="bg-white border border-gray-200 rounded-xl p-4">
-            <div className="flex items-center justify-between mb-4">
-              <p className="text-sm font-medium text-gray-800">Recent Bookings</p>
-              <a href="#" className="text-xs text-orange-500 hover:text-orange-600">View all</a>
-            </div>
-            <p className="text-sm text-gray-400 text-center py-8">No recent bookings</p>
+          <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center">
+            <img src={Money} alt="" className="h-11 w-11" />
           </div>
+        </div>
 
-          <div className="bg-white border border-gray-200 rounded-xl p-4">
-            <p className="text-sm font-medium text-gray-800 mb-4">User Feedback</p>
-            <div className="flex flex-col items-center py-4">
-              <div className="w-20 h-20 rounded-full border-4 border-gray-200 flex flex-col items-center justify-center mb-4">
-                <p className="text-lg font-semibold text-gray-900">0%</p>
-                <p className="text-xs text-gray-400">Positive</p>
+        {/* Bookings Section */}
+        <div className="grid grid-cols-3 gap-4">
+
+          {/* Pending Bookings */}
+          <div className="col-span-2 bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
+            <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                <p className="text-sm font-semibold text-gray-800">Pending Bookings</p>
+                <span className="text-xs bg-red-50 text-red-500 font-medium px-2 py-0.5 rounded-full">2</span>
               </div>
-              <div className="flex gap-6 text-sm text-gray-500">
-                <span>👍 0</span>
-                <span>👎 0</span>
-              </div>
+              <a href="#" className="text-xs text-orange-500 hover:text-orange-600 font-medium">View all</a>
+            </div>
+
+            <div className="divide-y divide-gray-50">
+              {[
+                { name: "Ahmed Khan", service: "Premium Detail", date: "June 10", time: "2:30 PM – 3:00 PM", car: "Toyota Corolla (Silver)", price: "PKR 2,500" },
+                { name: "Sara Ahmed",  service: "Express Wash",   date: "June 10", time: "4:00 PM – 4:15 PM", car: "Honda City (White)",    price: "PKR 1,500" },
+              ].map((b, i) => (
+                <div key={i} className="px-5 py-4">
+                  <div className="flex items-start gap-3">
+                    {/* Avatar */}
+                    <div className="w-9 h-9 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 text-sm font-semibold flex-shrink-0">
+                      {b.name.charAt(0)}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between">
+                        <p className="text-sm font-semibold text-gray-900">{b.name}</p>
+                        <span className="text-sm font-bold text-orange-500">{b.price}</span>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-0.5">{b.service}</p>
+                      <div className="flex items-center gap-3 mt-1.5 text-xs text-gray-400">
+                        <span>📅 {b.date}</span>
+                        <span>⏰ {b.time}</span>
+                        <span>🚗 {b.car}</span>
+                      </div>
+                      <div className="flex items-center gap-2 mt-3">
+                        <button className="flex items-center gap-1 px-3 py-1.5 bg-green-50 hover:bg-green-100 text-green-600 text-xs font-medium rounded-lg transition-colors">
+                          ✅ Confirm
+                        </button>
+                        <button className="flex items-center gap-1 px-3 py-1.5 bg-red-50 hover:bg-red-100 text-red-500 text-xs font-medium rounded-lg transition-colors">
+                          ❌ Reject
+                        </button>
+                        <button className="flex items-center gap-1 px-3 py-1.5 bg-gray-50 hover:bg-gray-100 text-gray-500 text-xs font-medium rounded-lg transition-colors">
+                          💬 Chat
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        </div> */}
+
+          {/* Confirmed Bookings */}
+          <div className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
+            <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-green-500"></span>
+                <p className="text-sm font-semibold text-gray-800">Confirmed</p>
+                <span className="text-xs bg-green-50 text-green-600 font-medium px-2 py-0.5 rounded-full">3</span>
+              </div>
+            </div>
+
+            <div className="divide-y divide-gray-50">
+              {[
+                { name: "Fatima Khan", service: "Deep Cleaning",     date: "June 11", time: "10:00 AM" },
+                { name: "Ali Raza",    service: "Interior Detailing", date: "June 12", time: "2:00 PM"  },
+                { name: "Usman Malik", service: "Express Wash",       date: "June 13", time: "11:00 AM" },
+              ].map((b, i) => (
+                <div key={i} className="px-5 py-4">
+                  <div className="flex items-center gap-2 mb-1">
+                    <div className="w-7 h-7 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 text-xs font-semibold flex-shrink-0">
+                      {b.name.charAt(0)}
+                    </div>
+                    <p className="text-sm font-semibold text-gray-900 truncate">{b.name}</p>
+                  </div>
+                  <p className="text-xs text-gray-500">{b.service}</p>
+                  <p className="text-xs text-gray-400 mt-0.5">📅 {b.date} · ⏰ {b.time}</p>
+                  <div className="flex gap-2 mt-2.5">
+                    <button className="flex-1 px-2 py-1.5 border border-gray-200 hover:bg-gray-50 text-gray-500 text-xs rounded-lg transition-colors">
+                      Details
+                    </button>
+                    <button className="flex-1 px-2 py-1.5 bg-orange-500 hover:bg-orange-600 text-white text-xs rounded-lg transition-colors">
+                      Complete
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+        {/* /////////////////////////////////////////////////// */}
       </main>
-      <UserMenuModal
-  isOpen={isModalOpen}
-  onClose={() => setIsModalOpen(false)}
-  onProfile={handleProfile}
-  onSettings={handleSettings}
-  onLogout={handleLogout}
-  position={modalPosition}
-/>
     </div>
-  );
+  )
 }
+
+export default Dashboard

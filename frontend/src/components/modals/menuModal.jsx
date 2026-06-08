@@ -1,6 +1,8 @@
 import ProfileLogo from '../../assets/account.png'
 import SettingLogo from '../../assets/settings.png'
 import LogoutLogo from '../../assets/logout.png'
+import DarkLogo from '../../assets/moon.png'
+import NotifiLogo from '../../assets/notification.png'
 
 
 import React from "react";
@@ -34,32 +36,32 @@ export default function UserMenuModal({
               top: position.top,
               left: position.left,
             }}
-            className="absolute w-47 rounded-lg shadow-lg  border-[1px] bg-orange-500/20 border-[#FF6A00] py-2"
+            className="absolute flex flex-col items-center justify-center w-47 rounded-lg shadow-lg bg-white border-gray-300 border-[1px] py-2"
           >
             <button
               onClick={onProfile}
-              className="w-full text-left px-3 py-2 hover:cursor-pointer text-sm"
+              className="w-44 text-left px-3 py-2 hover:cursor-pointer hover:bg-orange-500/20 rounded-lg   text-sm"
             >
-              Profile
-              <img src={ProfileLogo} className="w-4 h-4 inline-block ml-[106px]" />
+              Dark Mode
+              <img src={DarkLogo} className="w-5 h-5 inline-block ml-[62px] " />
             </button>
 
             <button
               onClick={onSettings}
-              className="w-full text-left px-3 py-2 hover:cursor-pointer text-sm"
+              className="w-44 text-left px-3 py-2  hover:cursor-pointer hover:bg-orange-500/20 rounded-lg  text-sm"
             >
-              Settings
-              <img src={SettingLogo} className="w-4 h-4 inline-block ml-24" />
+              Notifications
+              <img src={NotifiLogo} className="w-4 h-4 inline-block ml-[56px]" />
             </button>
 
-            <hr className="border-[#9CA3AF] w-[170px] ml-2 " />
+            <hr className="border-[#9CA3AF] w-[170px] ml-2 my-2 " />
 
             <button
               onClick={onLogout}
-              className="w-full text-left px-3 py-2 hover:cursor-pointer text-red-600 text-sm"
+              className="w-44 text-left px-3 py-2 hover:cursor-pointer hover:bg-red-500/40 rounded-lg text-sm"
             >
               Logout
-              <img src={LogoutLogo} className="w-4 h-4 inline-block ml-[102px]" />    
+              <img src={LogoutLogo} className="w-4 h-4 inline-block ml-[90px]" />    
             </button>
           </motion.div>
         </div>

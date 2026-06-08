@@ -1,31 +1,35 @@
-// // src/routes.jsx
-// import { Routes, Route, Navigate } from "react-router-dom";
-// import HomeLayout from "./Home"; // NavBar + SideBar
-// import Cons from "./Consultations";
-// import Avail from "./Availability";
-// import Set from "./settings";
-// import Faqs from "./faqs";
-// import ContactSupport from "./contactSupport";
-// import Auth from "./authentication";
+import { Routes, Route, Navigate } from "react-router-dom";
 
-// function AppRoutes() {
-//   return (
-//     <Routes>
-//       {/* Wrap all routes inside HomeLayout */}
-//       <Route path="/" element={<HomeLayout />}>
-//         <Route index element={<Navigate to="/dashboard" />} />
-//         <Route path="dashboard" element={<Cons />} />
-//         <Route path="availability" element={<Avail />} />
-//         <Route path="settings" element={<Set />} />
-//         <Route path="faqs" element={<Faqs />} />
-//         <Route path="support" element={<ContactSupport />} />
-//       </Route>
-//       <Route path="login" element={<Auth />} />
+import HomeLayout from "./pages/Home";
+import Dashboard from "./pages/DashBoard";
+import Profile from "./pages/profile";
+import Settings from "./pages/settings";
+import Auth from "./pages/LoginPage";
+import Serv from "./pages/services";
 
-//       {/* Catch-all → redirect to dashboard */}
-//       <Route path="*" element={<Navigate to="/dashboard" />} />
-//     </Routes>
-//   );
-// }
+function AppRoutes() {
+  return (
+    <Routes>
+      {/* Auth route (outside layout) */}
+      <Route path="/login" element={<Auth />} />
 
-// export default AppRoutes;
+      {/* Main layout routes */}
+      <Route path="/" element={<HomeLayout />}>
+        
+        {/* default route → dashboard */}
+        <Route index element={<Navigate to="/dashboard" />} />
+
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="services" element={<Serv />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="settings" element={<Settings />} />
+
+      </Route>
+
+      {/* fallback */}
+      <Route path="*" element={<Navigate to="/dashboard" />} />
+    </Routes>
+  );
+}
+
+export default AppRoutes;
