@@ -3,7 +3,7 @@ import React from 'react'
 const settings = () => {
   return (
     <div>
-      <main className="flex-1 p-6 overflow-auto bg-gray-50">
+      <main className="flex-1 p-6 overflow-auto bg-gray-50 rounded-lg ">
 
       {/* Header */}
       <div className="mb-6">

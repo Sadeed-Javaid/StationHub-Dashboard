@@ -3,6 +3,8 @@ import SettingLogo from '../../assets/settings.png'
 import LogoutLogo from '../../assets/logout.png'
 import DarkLogo from '../../assets/moon.png'
 import NotifiLogo from '../../assets/notification.png'
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
+
 
 
 import React from "react";
@@ -16,6 +18,16 @@ export default function UserMenuModal({
   onLogout,
   position,
 }) {
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // optional: clear auth data
+    // localStorage.removeItem("token");
+
+    navigate("/login"); // or "/" if you want home page
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -57,7 +69,7 @@ export default function UserMenuModal({
             <hr className="border-[#9CA3AF] w-[170px] ml-2 my-2 " />
 
             <button
-              onClick={onLogout}
+              onClick={handleLogout}
               className="w-44 text-left px-3 py-2 hover:cursor-pointer hover:bg-red-500/40 rounded-lg text-sm"
             >
               Logout

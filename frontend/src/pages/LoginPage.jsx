@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Logo from "../assets/logo.png";
 import BGImage from "../assets/WebLandingPage2.png";
+import { useNavigate } from "react-router-dom";
 // ─────────────────────────────────────────────
 //  REPLACE THESE with your actual asset paths
 // ─────────────────────────────────────────────
@@ -11,10 +12,32 @@ const LOGO_SRC = Logo;
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  
+  const navigate = useNavigate();
+  
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  
+  const validUser = {
+    email: "admin@gmail.com",
+    password: "123456",
+  };
+  
+  const isLoggedIn = localStorage.getItem("token");
+const handleLogin = () => {
+  console.log("email:", email);
+console.log("password:", password);
+  if (email === validUser.email && password === validUser.password) {
+    localStorage.setItem("token", "logged-in");
+    navigate("/dashboard");
+  } else {
+    alert("Invalid credentials");
+  }
+};
 
   return (
     <div
-      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden"
+      className="py-3 relative min-h-screen w-full flex items-center justify-center overflow-hidden"
       style={{
         backgroundImage: `url(${BG_IMAGE})`,
         backgroundSize: "cover",
@@ -50,6 +73,8 @@ const LoginPage = () => {
             <input
               type="email"
               placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="flex-1 outline-none text-sm text-gray-700 placeholder-gray-400 bg-transparent"
             />
           </div>
@@ -67,6 +92,8 @@ const LoginPage = () => {
             <input
               type={showPassword ? "text" : "password"}
               placeholder="••••••••"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="flex-1 outline-none text-sm text-gray-700 placeholder-gray-400 bg-transparent"
             />
             <button
@@ -106,7 +133,8 @@ const LoginPage = () => {
 
         {/* Sign In Button */}
         <button
-          className="w-full py-3 rounded-lg text-white font-bold text-base tracking-wide flex items-center justify-center gap-2 shadow-lg transition-all duration-200 hover:brightness-110 active:scale-95 mb-5"
+        onClick={handleLogin}
+          className="hover:cursor-pointer w-full py-3 rounded-lg text-white font-bold text-base tracking-wide flex items-center justify-center gap-2 shadow-lg transition-all duration-200 hover:brightness-110 active:scale-95 mb-5"
           style={{
             background: "linear-gradient(90deg, #f97316, #ea580c)",
             boxShadow: "0 4px 24px 0 rgba(249,115,22,0.4)",
