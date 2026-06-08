@@ -19,7 +19,7 @@ const statCards = [
   return (
     <div>
         {/* ── Main Content ── */}
-      <main className="flex-1 p-6 overflow-auto">
+      <main className="flex-1 p-6 overflow-auto bg-gray-50 rounded-lg ">
 
         {/* Header */}
         <div className="flex items-start justify-between mb-6">

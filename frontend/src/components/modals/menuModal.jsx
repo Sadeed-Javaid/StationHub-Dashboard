@@ -40,7 +40,7 @@ export default function UserMenuModal({
           >
             <button
               onClick={onProfile}
-              className="w-44 text-left px-3 py-2 hover:cursor-pointer hover:bg-orange-500/20 rounded-lg   text-sm"
+              className="w-44 text-left px-3 py-2 hover:cursor-pointer hover:bg-gray-500/20 rounded-lg   text-sm"
             >
               Dark Mode
               <img src={DarkLogo} className="w-5 h-5 inline-block ml-[62px] " />
@@ -48,7 +48,7 @@ export default function UserMenuModal({
 
             <button
               onClick={onSettings}
-              className="w-44 text-left px-3 py-2  hover:cursor-pointer hover:bg-orange-500/20 rounded-lg  text-sm"
+              className="w-44 text-left px-3 py-2  hover:cursor-pointer hover:bg-gray-500/20 rounded-lg  text-sm"
             >
               Notifications
               <img src={NotifiLogo} className="w-4 h-4 inline-block ml-[56px]" />
